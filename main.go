@@ -1,8 +1,8 @@
 package main
 
 import (
-	"app/calendar"
-	"app/events"
+	"github.com/svk-man/go-events-calendar/calendar"
+	"github.com/svk-man/go-events-calendar/events"
 	"fmt"
 	"time"
 )
@@ -14,4 +14,5 @@ func main() {
 	}
 	calendar.AddEvent("event1", e)
 	fmt.Println("Календарь обновлён")
+	fmt.Scanln()
 }

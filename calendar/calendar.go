@@ -1,7 +1,7 @@
 package calendar
 
 import (
-	"app/events"
+	"github.com/svk-man/go-events-calendar/events"
 	"fmt"
 )
 
