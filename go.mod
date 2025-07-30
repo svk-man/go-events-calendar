@@ -1,3 +1,3 @@
-module github.com/svk-man/go-events-calendar
+module go-events-calendar
 
 go 1.24.5

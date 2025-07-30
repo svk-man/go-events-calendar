@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/svk-man/go-events-calendar/calendar"
-	"github.com/svk-man/go-events-calendar/events"
+	"go-events-calendar/calendar"
+	"go-events-calendar/events"
 	"fmt"
 	"time"
 )
