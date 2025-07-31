@@ -14,6 +14,7 @@ func main() {
 	}
 
 	calendar.AddEvent("event1", e)
-	fmt.Println("Календарь обновлён")
+	calendar.ShowEvents()
+
 	fmt.Scanln()
 }
