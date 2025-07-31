@@ -14,6 +14,9 @@ func main() {
 	}
 
 	calendar.AddEvent("event1", e)
+	calendar.AddEvent("event2", e)
+	calendar.AddEvent("event3", e)
+
 	calendar.ShowEvents()
 
 	fmt.Scanln()
