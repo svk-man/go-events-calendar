@@ -13,6 +13,10 @@ type Event struct {
 }
 
 func NewEvent(title string, dateStr string) (Event, error) {
+	if !isValidTitle(title) {
+		return Event{}, errors.New("неверный формат заголовка")
+	}
+
 	t, err := dateparse.ParseAny(dateStr)
 
 	if err != nil {

@@ -7,7 +7,13 @@ import (
 )
 
 func main() {
-	e, err := events.NewEvent("Встреча", "2024-07-15 09:30")
+	e, err := events.NewEvent("Встреча;", "2024-07-15 09:30")
+	if err != nil {
+		fmt.Println("Ошибка создания события:", err)
+		return
+	}
+
+	e, err = events.NewEvent("Встреча", "2024-07-15 09:30")
 	if err != nil {
 		fmt.Println("Ошибка создания события:", err)
 		return
