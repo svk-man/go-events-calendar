@@ -13,7 +13,7 @@ type Event struct {
 }
 
 func NewEvent(title string, dateStr string) (Event, error) {
-	if !isValidTitle(title) {
+	if !IsValidTitle(title) {
 		return Event{}, errors.New("неверный формат заголовка")
 	}
 
