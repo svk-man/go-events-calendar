@@ -17,6 +17,11 @@ func UpdateEvent(key string, e events.Event) {
 	fmt.Println("Событие обновлено:", e.Title)
 }
 
+func RemoveEvent(key string) {
+	fmt.Println("Событие удалено:", eventsMap[key].Title)
+	delete(eventsMap, key)
+}
+
 func ShowEvents() {
 	for _, event := range eventsMap {
 		fmt.Println(event.Title + " - " + event.StartAt.String())

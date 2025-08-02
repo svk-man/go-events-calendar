@@ -24,6 +24,7 @@ func main() {
 	}
 
 	calendar.UpdateEvent("event3", e)
+	calendar.RemoveEvent("event2")
 
 	calendar.ShowEvents()
 
