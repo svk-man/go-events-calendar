@@ -1,42 +1,54 @@
 package calendar
 
 import (
-	"errors"
 	"fmt"
 	"go-events-calendar/events"
 )
 
-var eventsMap = make(map[string]events.Event)
+var calendarEvents = make(map[string]events.Event)
 
-func AddEvent(key string, e events.Event) error {
-	if !events.IsValidTitle(e.Title) {
-		return errors.New("неверный формат заголовка")
+func AddEvent(title string, date string) (events.Event, error) {
+	e, err := events.NewEvent(title, date)
+	if err != nil {
+		return events.Event{}, err
 	}
 
-	eventsMap[key] = e
-	fmt.Println("Событие добавлено:", e.Title)
+	calendarEvents[e.ID] = e
+	fmt.Println("Событие добавлено:", e.ID)
+
+	return e, nil
+}
+
+func EditEvent(id string, title string, date string) error {
+	e, err := events.NewEvent(title, date)
+	if err != nil {
+		return err
+	}
+
+	e.ID = id
+	calendarEvents[e.ID] = e
+
+	fmt.Println("Событие обновлено:", e.ID)
 
 	return nil
 }
 
-func UpdateEvent(key string, e events.Event) error {
-	if !events.IsValidTitle(e.Title) {
-		return errors.New("неверный формат заголовка")
+func DeleteEvent(id string) {
+	targetKey := ""
+	for key, event := range calendarEvents {
+		if event.ID == id {
+			targetKey = key
+		}
 	}
 
-	eventsMap[key] = e
-	fmt.Println("Событие обновлено:", e.Title)
-
-	return nil
-}
-
-func RemoveEvent(key string) {
-	fmt.Println("Событие удалено:", eventsMap[key].Title)
-	delete(eventsMap, key)
+	if targetKey != "" {
+		delete(calendarEvents, targetKey)
+		fmt.Println("Событие удалено:", id)
+	}
 }
 
 func ShowEvents() {
-	for _, event := range eventsMap {
+	for _, event := range calendarEvents {
 		fmt.Println(event.Title + " - " + event.StartAt.String())
 	}
 }

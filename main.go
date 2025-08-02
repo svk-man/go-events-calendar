@@ -3,28 +3,28 @@ package main
 import (
 	"fmt"
 	"go-events-calendar/calendar"
-	"go-events-calendar/events"
 )
 
 func main() {
-	e, err := events.NewEvent("Встреча", "2024-07-15 09:30")
-	if err != nil {
-		fmt.Println("Ошибка создания события:", err)
+	event1, err1 := calendar.AddEvent("Встреча", "2025/06/12 16:33")
+	if err1 != nil {
+		fmt.Println("Ошибка:", err1)
 		return
 	}
 
-	calendar.AddEvent("event1", e)
-	calendar.AddEvent("event2", e)
-	calendar.AddEvent("event3", e)
-
-	e, err = events.NewEvent("Обновленная встреча", "2024-07-20 12:00")
-	if err != nil {
-		fmt.Println("Ошибка создания события:", err)
+	event2, err2 := calendar.AddEvent("Еще одна встреча", "2025/06/12 15:00")
+	if err2 != nil {
+		fmt.Println("Ошибка:", err2)
 		return
 	}
 
-	calendar.UpdateEvent("event3", e)
-	calendar.RemoveEvent("event2")
+	calendar.ShowEvents()
+	calendar.DeleteEvent(event1.ID)
+
+	err := calendar.EditEvent(event2.ID, "Созвон", "2025/06/12 16:50")
+	if err != nil {
+		fmt.Println("Ошибка:", err)
+	}
 
 	calendar.ShowEvents()
 
