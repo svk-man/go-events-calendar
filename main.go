@@ -7,13 +7,7 @@ import (
 )
 
 func main() {
-	e, err := events.NewEvent("Встреча;", "2024-07-15 09:30")
-	if err != nil {
-		fmt.Println("Ошибка создания события:", err)
-		return
-	}
-
-	e, err = events.NewEvent("Встреча", "2024-07-15 09:30")
+	e, err := events.NewEvent("Встреча", "2024-07-15 09:30")
 	if err != nil {
 		fmt.Println("Ошибка создания события:", err)
 		return
@@ -22,6 +16,14 @@ func main() {
 	calendar.AddEvent("event1", e)
 	calendar.AddEvent("event2", e)
 	calendar.AddEvent("event3", e)
+
+	e, err = events.NewEvent("Обновленная встреча", "2024-07-20 12:00")
+	if err != nil {
+		fmt.Println("Ошибка создания события:", err)
+		return
+	}
+
+	calendar.UpdateEvent("event3", e)
 
 	calendar.ShowEvents()
 
